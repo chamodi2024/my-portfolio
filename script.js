@@ -188,4 +188,20 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeRole, isDeleting ? 40 : 80);
   }
   typeRole();
+
+  // ===== THEME TOGGLE LOGIC =====
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+
+  // Check for saved theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+    const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+    localStorage.setItem('theme', currentTheme);
+  });
 });
